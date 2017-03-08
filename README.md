@@ -1,2 +1,7 @@
 # underthesea.service
-Underthesea Service
+
+Integrate with other Vietnamese NLP libraries 
+
+Todo List
+
+[ ] vnTokenizer
