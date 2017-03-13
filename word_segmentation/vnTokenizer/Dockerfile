@@ -1,4 +1,4 @@
-FROM java:7
+FROM java:7-jdk
 
 RUN apt-get update
 
