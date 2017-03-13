@@ -1,0 +1,10 @@
+version: "2"
+services:
+  tokenizer:
+    build: ./vnTokenizer
+    command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
+    volumes:
+      - ./vnTokenizer:/vnTokenizer
+    ports:
+      - 8080:8080
+

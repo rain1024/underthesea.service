@@ -1,2 +1,1 @@
-# underthesea.service
-Underthesea Service
+# Underthesea Service
