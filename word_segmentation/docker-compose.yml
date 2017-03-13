@@ -1,6 +1,6 @@
 version: "2"
 services:
-  tokenizer:
+  jvn:
     build: ./vnTokenizer
     command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
     volumes:
