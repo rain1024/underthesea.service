@@ -15,21 +15,19 @@ class DataView(object):
     def POST(self):
         rawData = cherrypy.request.body.read(int(cherrypy.request.headers['Content-Length']))
         data = json.loads(rawData)
+
         script_folder = join("/pyvi", "pyvi")
         input_file = join(script_folder, "input.txt")
         output_file = join(script_folder, "output.txt")
+
         # GET INPUT
         input = data["text"]
-        # input = preprocess_input(input)
         open(input_file, "w").write(input.encode("utf-8"))
 
         # CALL ENDPOINT
         os.system("cd /pyvi/pyvi; python script.py")
-        # result = open("output.txt", "r").read()
-        # result = postprocess_output(result)
 
         # SEND OUTPUT
-        result = input
         result = open(output_file, "r").read()
         return json.dumps({"result": result}, ensure_ascii=False)
 

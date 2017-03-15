@@ -17,8 +17,14 @@ services:
   pyvi:
     build: ./pyvi
     command: /bin/bash -c "cd /pyvi/service/ && python service.py"
-#    command: tail -f /dev/null
     volumes:
       - ./pyvi:/pyvi
     ports:
       - 8082:8082
+  uetsegmenter:
+    build: ./UETsegmenter
+    command: /bin/bash -c "cd /UETsegmenter/service/ && python service.py"
+    volumes:
+      - ./UETsegmenter:/UETsegmenter
+    ports:
+      - 8083:8083
