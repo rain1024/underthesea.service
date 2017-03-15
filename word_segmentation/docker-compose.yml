@@ -7,10 +7,18 @@ services:
 #      - ./vnTokenizer:/vnTokenizer
 #    ports:
 #      - 8080:8080
-  jvn:
-    build: ./jvnSegmenter
-    command: /bin/bash -c "cd /jvnSegmenter/service/ && python service.py"
+#  jvn:
+#    build: ./jvnSegmenter
+#    command: /bin/bash -c "cd /jvnSegmenter/service/ && python service.py"
+#    volumes:
+#      - ./jvnSegmenter:/jvnSegmenter
+#    ports:
+#      - 8081:8081
+  pyvi:
+    build: ./pyvi
+    command: /bin/bash -c "cd /pyvi/service/ && python service.py"
+#    command: tail -f /dev/null
     volumes:
-      - ./jvnSegmenter:/jvnSegmenter
+      - ./pyvi:/pyvi
     ports:
-      - 8081:8081
+      - 8082:8082

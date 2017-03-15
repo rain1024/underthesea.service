@@ -142,3 +142,4 @@ fabric.properties
 /word_segmentation/vnTokenizer/service/output.txt
 !/word_segmentation/vnTokenizer/vntokenizer/lib/
 /word_segmentation/jvnSegmenter/labs/
+/word_segmentation/pyvi/pyvi/labs/
