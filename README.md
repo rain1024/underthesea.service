@@ -4,6 +4,6 @@ Integrate with other Vietnamese NLP libraries
 
 Todo List
 
-[ ] jvnSegmenter
+[✓] jvnSegmenter
 
 [✓] vnTokenizer
