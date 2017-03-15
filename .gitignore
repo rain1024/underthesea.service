@@ -143,3 +143,5 @@ fabric.properties
 !/word_segmentation/vnTokenizer/vntokenizer/lib/
 /word_segmentation/jvnSegmenter/labs/
 /word_segmentation/pyvi/pyvi/labs/
+!/word_segmentation/jvnSegmenter/JVnSegmenter/build/
+!/word_segmentation/jvnSegmenter/JVnSegmenter/dist/
