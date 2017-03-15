@@ -1,10 +1,16 @@
 version: "2"
 services:
+#  tokenizer:
+#    build: ./vnTokenizer
+#    command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
+#    volumes:
+#      - ./vnTokenizer:/vnTokenizer
+#    ports:
+#      - 8080:8080
   jvn:
-    build: ./vnTokenizer
-    command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
+    build: ./jvnSegmenter
+    command: /bin/bash -c "cd /jvnSegmenter/service/ && python service.py"
     volumes:
-      - ./vnTokenizer:/vnTokenizer
+      - ./jvnSegmenter:/jvnSegmenter
     ports:
-      - 8080:8080
-
+      - 8081:8081
