@@ -2,6 +2,7 @@ import cherrypy
 import json
 import os
 
+from process import preprocess_input, postprocess_output
 
 class DataView(object):
     exposed = True
@@ -11,10 +12,12 @@ class DataView(object):
         rawData = cherrypy.request.body.read(int(cherrypy.request.headers['Content-Length']))
         data = json.loads(rawData)
         input = data["text"]
+        input = preprocess_input(input)
         open("input.txt", "w").write(input.encode("utf-8"))
         # call endpoint
-        os.system("cd /vnTokenizer/vntokenizer/; ./vnTokenizer.sh -i ../service/input.txt -o ../service/output.txt")
+        os.system("cd /royvntokenizer/Roy_VnTokenizer/scripts; python vn_tokenizer.py /royvntokenizer/service/input.txt /royvntokenizer/service/output.txt")
         result = open("output.txt", "r").read()
+        result = postprocess_output(result)
         return json.dumps({"result": result}, ensure_ascii=False)
 
 
@@ -30,5 +33,5 @@ if __name__ == '__main__':
         }
     }
     cherrypy.tools.CORS = cherrypy.Tool('before_handler', CORS)
-    cherrypy.config.update({'server.socket_host': '0.0.0.0'})
+    cherrypy.config.update({'server.socket_host': '0.0.0.0', 'server.socket_port': 8085})
     cherrypy.quickstart(DataView(), '/tokenize/', conf)

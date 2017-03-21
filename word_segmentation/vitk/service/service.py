@@ -16,7 +16,7 @@ class DataView(object):
         rawData = cherrypy.request.body.read(int(cherrypy.request.headers['Content-Length']))
         data = json.loads(rawData)
 
-        script_folder = join("/pyvi", "pyvi")
+        script_folder = join("/vitk", "vitk")
         input_file = join(script_folder, "input.txt")
         output_file = join(script_folder, "output.txt")
 
@@ -25,7 +25,7 @@ class DataView(object):
         open(input_file, "w").write(input.encode("utf-8"))
 
         # CALL ENDPOINT
-        os.system("cd /pyvi/pyvi; python script.py")
+        os.system("cd /vitk/vitk; ./vitk.sh")
 
         # SEND OUTPUT
         result = open(output_file, "r").read()

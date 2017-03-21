@@ -13,9 +13,12 @@ class DataView(object):
         rawData = cherrypy.request.body.read(int(cherrypy.request.headers['Content-Length']))
         data = json.loads(rawData)
         input = data["text"]
+
         input = preprocess_input(input)
         open("input.txt", "w").write(input.encode("utf-8"))
+
         os.system("java -classpath ../JVnSegmenter/dist/JVnSegmenter.jar JVnSegmenter.JVnSegmenter -modeldir ../JVnSegmenter/models -inputfile input.txt; mv input.txt.wseg output.txt")
+
         result = open("output.txt", "r").read()
         result = postprocess_output(result)
         return json.dumps({"result": result}, ensure_ascii=False)

@@ -1,7 +1,7 @@
-FROM java:7-jdk
+FROM python:2.7.13
 
 RUN apt-get update
 
-RUN apt-get install -y python-pip python-dev build-essential
-
 RUN pip install cherrypy
+
+RUN pip install numpy scipy

@@ -1,0 +1,11 @@
+jflexcrf
+jmaxent
+jvnpostag
+jvnsegmenter
+jvnsensegmenter
+jvntextpro
+jvntextpro.conversion
+jvntextpro.data
+jvntextpro.service
+jvntextpro.util
+jvntokenizer

@@ -1,19 +1,21 @@
 version: "2"
 services:
-#  tokenizer:
-#    build: ./vnTokenizer
-#    command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
-#    volumes:
-#      - ./vnTokenizer:/vnTokenizer
-#    ports:
-#      - 8080:8080
-#  jvn:
-#    build: ./jvnSegmenter
-#    command: /bin/bash -c "cd /jvnSegmenter/service/ && python service.py"
-#    volumes:
-#      - ./jvnSegmenter:/jvnSegmenter
-#    ports:
-#      - 8081:8081
+  tokenizer:
+    build: ./vnTokenizer
+    command: /bin/bash -c "cd /vnTokenizer/service/ && python service.py"
+    volumes:
+      - ./vnTokenizer:/vnTokenizer
+    ports:
+      - 8080:8080
+
+  jvn:
+    build: ./jvnSegmenter
+    command: /bin/bash -c "cd /jvnSegmenter/service/ && python service.py"
+    volumes:
+      - ./jvnSegmenter:/jvnSegmenter
+    ports:
+      - 8081:8081
+
   pyvi:
     build: ./pyvi
     command: /bin/bash -c "cd /pyvi/service/ && python service.py"
@@ -21,6 +23,7 @@ services:
       - ./pyvi:/pyvi
     ports:
       - 8082:8082
+
   uetsegmenter:
     build: ./UETsegmenter
     command: /bin/bash -c "cd /UETsegmenter/service/ && python service.py"
@@ -28,3 +31,37 @@ services:
       - ./UETsegmenter:/UETsegmenter
     ports:
       - 8083:8083
+  vitk:
+    build: ./vitk
+    command: cd /vitk; bash run.sh;
+    volumes:
+      - ./vitk:/vitk
+      - ./vitk/vitk/dat:/export/dat
+    ports:
+      - 8084:8084
+
+  roy_vntokenize:
+    build: ./royvntokenizer
+    command: /bin/bash -c "cd /royvntokenizer/service/ && python service.py"
+    volumes:
+      - ./royvntokenizer:/royvntokenizer
+    ports:
+      - 8085:8085
+
+
+  dongdu:
+    build: ./dongdu
+    command: /bin/bash -c "cd /dongdu/service/ && python service.py"
+    volumes:
+      - ./dongdu:/dongdu
+    ports:
+    - 8086:8086
+
+  jvntextpro:
+    build: ./JVnTextPro
+    command: /bin/bash -c "cd /JVnTextPro/service/ && python service.py"
+#   command: /bin/bash -c "tail -f /dev/null"
+    volumes:
+      - ./JVnTextPro:/JVnTextPro
+    ports:
+      - 8087:8087
